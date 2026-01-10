@@ -1,6 +1,9 @@
 # Use Amazon Corretto 21 on Alpine Linux
 FROM amazoncorretto:21-alpine-jdk
 
+# Install curl
+RUN apk add --no-cache curl
+
 # Set working directory
 WORKDIR /app
 

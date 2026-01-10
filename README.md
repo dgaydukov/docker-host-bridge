@@ -21,6 +21,11 @@ Let's consider 2 types of network mode:
 * host - you don't need anything else, just access by `127.0.0.1:PORT`
 
 ### Project setup
+There are 3 ports:
+* 5555 - port of the host app
+* 4444 - port of the docker app
+* 6666 - port mapped from docker to host
+
 Host app
 ```shell
 # get status on host
@@ -45,4 +50,6 @@ mvn clean package
 docker build -t docker-app .
 # run from docker-compose
 docker-compose -f docker-compose.yml up -d
+# connect to inside of container (you can run curl inside)
+docker-compose exec docker-app sh
 ```
