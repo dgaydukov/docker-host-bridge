@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  docker-app:
+    image: docker-app
+    container_name: docker-app-container
+    network_mode: bridge
+    ports:
+      - "4444:4444"

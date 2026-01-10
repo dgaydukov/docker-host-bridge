@@ -43,6 +43,6 @@ Build docker container:
 mvn clean package
 # build docker image
 docker build -t docker-app .
-# run the docker with port forward
-docker run -p 4444:4444 docker-app
+# run from docker-compose
+docker-compose -f docker-compose.yml up -d
 ```
