@@ -6,6 +6,7 @@
 * [Accessing host from docker](#accessing-host-from-docker)
 * [Project setup](#project-setup)
 * [Running on MacOS](#running-on-macos)
+* [Running on Windows](#running-on-windows)
 
 ### Description
 The main goal of this project is show different type of communication between docker and host. There are 2 main scenarios. First you may like to access apps running inside docker from the host. The second scenario is that app running inside the docker needs to access the app running on host. But before jumping with more details and examples into these 2, let's first talk about 2 primary network modes inside docker:
@@ -61,3 +62,5 @@ Running with `bridge` network mode works perfectly fine. But switching to host i
 * docker on MacOS runs inside a lightweight Linux VM (HyperKit)
 * `network_mode: host` on Linux means the container shares host network
 * But on MacOS, the container would only share the VM’s network stack, not your Mac’s network, so localhost still points to the VM
+
+### Running on Windows
