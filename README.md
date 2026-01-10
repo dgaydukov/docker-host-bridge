@@ -19,3 +19,5 @@ This is the most common one and probably the simplest one. Let's consider 2 netw
 Let's consider 2 types of network mode:
 * bridge - you have to access the host using `host.docker.internal`
 * host - you don't need anything else, just access by `127.0.0.1:PORT`
+
+### Project setup

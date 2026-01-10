@@ -1,4 +1,4 @@
-package com.java.host.controllers;
+package com.java.docker.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

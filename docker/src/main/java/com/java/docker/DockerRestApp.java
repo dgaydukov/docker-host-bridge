@@ -1,11 +1,11 @@
-package com.java.host;
+package com.java.docker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HostRestApp {
+public class DockerRestApp {
 	public static void main(String[] args) {
-		SpringApplication.run(HostRestApp.class, args);
+		SpringApplication.run(DockerRestApp.class, args);
 	}
 }
