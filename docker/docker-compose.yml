@@ -4,6 +4,6 @@ services:
   docker-app:
     image: docker-app
     container_name: docker-app-container
-    network_mode: bridge
+    network_mode: host
     ports:
       - "6666:4444"
