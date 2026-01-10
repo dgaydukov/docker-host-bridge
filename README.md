@@ -36,3 +36,13 @@ curl -H "Content-Type: application/json" http://127.0.0.1:4444/api/info
 # call host from inside the docker
 curl -X POST -H "Content-Type: application/json" http://127.0.0.1:4444/api/call
 ```
+
+Build docker container:
+```shell
+# build project
+mvn clean package
+# build docker image
+docker build -t docker-app .
+# run the docker with port forward
+docker run -p 4444:4444 docker-app
+```
