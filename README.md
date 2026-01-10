@@ -21,3 +21,15 @@ Let's consider 2 types of network mode:
 * host - you don't need anything else, just access by `127.0.0.1:PORT`
 
 ### Project setup
+Host app
+```shell
+# get status on host
+curl -H "Content-Type: application/json" http://127.0.0.1:5555/api/info
+# call docker from inside the host
+curl -X POST -H "Content-Type: application/json" http://127.0.0.1:5555/api/call
+```
+
+Docker app
+```shell
+curl -H "Content-Type: application/json" http://127.0.0.1:4444/api/info
+```
