@@ -31,5 +31,8 @@ curl -X POST -H "Content-Type: application/json" http://127.0.0.1:5555/api/call
 
 Docker app
 ```shell
+# get status on docker
 curl -H "Content-Type: application/json" http://127.0.0.1:4444/api/info
+# call host from inside the docker
+curl -X POST -H "Content-Type: application/json" http://127.0.0.1:4444/api/call
 ```

@@ -3,3 +3,5 @@ spring:
     name: host
 server:
   port: 5555
+api:
+  base-url: http://127.0.0.1:4444/api/info

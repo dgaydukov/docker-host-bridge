@@ -2,5 +2,5 @@ package com.java.docker.dto;
 
 import java.time.LocalDateTime;
 
-public record Info(String app, LocalDateTime time) {
+public record ApiInfo(String app, LocalDateTime time) {
 }

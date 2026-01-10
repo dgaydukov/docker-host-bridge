@@ -4,6 +4,7 @@ import com.java.docker.dto.ApiInfo;
 import com.java.docker.dto.ResponseInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,22 +20,26 @@ import java.time.LocalDateTime;
 public class ApiController {
     private final RestTemplate restTemplate;
 
+    private final static String APP_NAME = "host";
+
+    @Value("${api.base-url}")
+    private String baseUrl;
+
     @GetMapping("/info")
     public ApiInfo getStatus(){
-        return new ApiInfo("host", LocalDateTime.now());
+        return new ApiInfo(APP_NAME, LocalDateTime.now());
     }
 
 
     @PostMapping("/call")
     public ResponseInfo callDocker(){
         log.info("Calling Docker API");
-        String url = "http://127.0.0.1:4444/api/info";
         try {
-            ApiInfo info = restTemplate.getForObject(url, ApiInfo.class);
-            return new ResponseInfo("host", info.toString(), LocalDateTime.now(), null);
+            ApiInfo info = restTemplate.getForObject(baseUrl, ApiInfo.class);
+            return new ResponseInfo(APP_NAME, info.toString(), LocalDateTime.now(), null);
         } catch (Exception ex) {
-            log.error("Failed to fetch data: url={}", url, ex);
-            return new ResponseInfo("host", null, LocalDateTime.now(), ex.getMessage());
+            log.error("Failed to fetch data: url={}", baseUrl, ex);
+            return new ResponseInfo(APP_NAME, null, LocalDateTime.now(), ex.getMessage());
         }
     }
 }
