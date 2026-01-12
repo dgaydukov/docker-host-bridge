@@ -71,4 +71,6 @@ Running with `host` network mode works not working:
 ### Running on Windows
 Running with `bridge` (default mode) network mode works with caveat:
 * you can access docker from the host using port binding
-* you can't access host from inside the docker `host.docker.internal`
+* you can't access host from inside the docker `host.docker.internal`:
+  * you have to add `extra_hosts` to `docker-compose.yml` file, only you add you can access the host `ping host.docker.internal`
+  * you have to disable `Windows Defender Firewall` - because it treats such connection as public and blocks traffic, otherwise you get `curl: (7) Failed to connect to host.docker.internal port 5555 after 1 ms: Could not connect to server`

@@ -2,6 +2,10 @@ services:
   docker-app:
     image: docker-app
     container_name: docker-app-container
+    # although it's default mode, just leave it here to change for host for testing
     network_mode: bridge
     ports:
       - "6666:4444"
+    # only for Windows, MacOS can resolve without this line
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
