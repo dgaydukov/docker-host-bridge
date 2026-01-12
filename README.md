@@ -64,7 +64,7 @@ Running with `bridge` (default mode) network mode works perfectly fine:
 * you can access docker from the host using port binding
 * you can access host from inside the docker using `host.docker.internal`
 
-Running with `host` network mode works not working:
+Running with `host` network mode doesn't work:
 * docker on MacOS runs inside a lightweight Linux VM (HyperKit)
 * `network_mode: host` on Linux means the container shares host network, but on MacOS, the container would only share the VM’s network stack, not your Mac’s network, so localhost still points to the VM
 
@@ -74,3 +74,8 @@ Running with `bridge` (default mode) network mode works with caveat:
 * you can't access host from inside the docker `host.docker.internal`:
   * you have to add `extra_hosts` to `docker-compose.yml` file, only you add you can access the host `ping host.docker.internal`
   * you have to disable `Windows Defender Firewall` - because it treats such connection as public and blocks traffic, otherwise you get `curl: (7) Failed to connect to host.docker.internal port 5555 after 1 ms: Could not connect to server`
+
+Running with `host` network mode working:
+* you can access docker from host using `127.0.0.1`
+* you can access host from docker by using `127.0.0.1`
+Comparing to MaOs `host` network mode working for Windows with WSL2, due to its architecture implementation on Windows.
