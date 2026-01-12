@@ -43,6 +43,8 @@ Docker app (connect to docker and run from inside):
 curl -H "Content-Type: application/json" http://127.0.0.1:4444/api/info
 # call host from inside the docker
 curl -X POST -H "Content-Type: application/json" http://127.0.0.1:4444/api/call
+# call from inside the docker to access host
+curl -H "Content-Type: application/json" http://host.docker.internal:5555/api/info
 ```
 
 Build docker container:
@@ -58,9 +60,15 @@ docker-compose exec docker-app sh
 ```
 
 ### Running on MacOS
-Running with `bridge` network mode works perfectly fine. But switching to host is not properly working:
+Running with `bridge` (default mode) network mode works perfectly fine:
+* you can access docker from the host using port binding
+* you can access host from inside the docker using `host.docker.internal`
+
+Running with `host` network mode works not working:
 * docker on MacOS runs inside a lightweight Linux VM (HyperKit)
-* `network_mode: host` on Linux means the container shares host network
-* But on MacOS, the container would only share the VM’s network stack, not your Mac’s network, so localhost still points to the VM
+* `network_mode: host` on Linux means the container shares host network, but on MacOS, the container would only share the VM’s network stack, not your Mac’s network, so localhost still points to the VM
 
 ### Running on Windows
+Running with `bridge` (default mode) network mode works with caveat:
+* you can access docker from the host using port binding
+* you can't access host from inside the docker `host.docker.internal`
